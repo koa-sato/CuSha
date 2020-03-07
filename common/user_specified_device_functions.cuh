@@ -39,7 +39,11 @@ inline __device__ void compute_CuSha(
 
 #ifdef BFS
 	if( SrcV.distance != BFS_INF )	// Just to prevent possible unpredicted overflows.
-		atomicMin( &(local_V->distance), SrcV.distance + 1 );
+		// atomicMin( &(local_V->distance), SrcV.distance + 1 );
+		if (E->weight != 0)
+			atomicMin( &(local_V->distance), SrcV.distance + 1);
+		else
+			atomicMin( &(local_V->distance), SrcV.distance);
 #endif
 
 #ifdef SSSP
@@ -112,7 +116,14 @@ inline __host__ __device__ void compute_local(
 		Vertex* refV	) {	// Value of the corresponding (destination) vertex inside shared memory.
 
 #ifdef BFS
-	thread_V_in_shared->distance = SrcV.distance + 1;
+	if (E->weight == 0)
+	{
+		thread_V_in_shared->distance = SrcV.distance - 1;
+	}
+	else 
+	{
+		thread_V_in_shared->distance = SrcV.distance + 1;
+	}
 #endif
 
 #ifdef SSSP

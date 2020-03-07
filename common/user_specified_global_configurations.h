@@ -1,5 +1,5 @@
-#ifndef	USER_SPECIFIED_GLOBAL_CONFIGURATIONS_H
-#define	USER_SPECIFIED_GLOBAL_CONFIGURATIONS_H
+#ifndef USER_SPECIFIED_GLOBAL_CONFIGURATIONS_H
+#define USER_SPECIFIED_GLOBAL_CONFIGURATIONS_H
 ///////////////////////////////////////////////
 
 #define VWC_COMPILE_TIME_DEFINED_BLOCK_SIZE 256
@@ -8,8 +8,8 @@
  * Sample algorithm templates. Uncomment whichever (only the one) you want to use.
  *********************************************/
 
-//#define BFS
-#define SSSP
+#define BFS
+// #define SSSP
 //#define PR
 
 /*********************************************
@@ -25,4 +25,4 @@
 #define PR_TOLERANCE 0.005f
 
 ///////////////////////////////////////////////
-#endif	//	USER_SPECIFIED_GLOBAL_CONFIGURATIONS_H
+#endif //	USER_SPECIFIED_GLOBAL_CONFIGURATIONS_H
